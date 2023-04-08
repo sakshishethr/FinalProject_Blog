@@ -1,0 +1,117 @@
+﻿@model IEnumerable<WebProjeOT.Models.About>
+@inject LanguageService language
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutProje.cshtml";
+}
+
+@*<h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AboutDetails)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AboutDetails_2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AboutImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AboutImage_2)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AboutDetails)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AboutDetails_2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AboutImage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AboutImage_2)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AboutID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AboutID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AboutID">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
+
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('https://7wallpapers.net/wp-content/uploads/11_Snowden.jpg');">
+    <div class="container">
+        <div class="row same-height justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="post-entry text-center">
+                    <h1 class="">@language.Getkey("About Us")</h1>
+                    <p class="lead mb-4 text-white">Sakarya Üniversitesi Bilgisayar Mühendisliği Öğrencileri.<br />Bizi Daha Yakından Tanımak İster Misiniz?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 order-md-2">
+                    <img src="@item.AboutImage" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-md-5 mr-auto order-md-1">
+                    <h2>Who Are We?</h2>
+
+                    <p>@item.AboutDetails</p>
+
+                    <ul class="ul-check list-unstyled success">
+                        <li>Onsectetur adipisicing elit</li>
+                        <li>Dolorem saepe non eligendi possimus</li>
+                        <li>Voluptate odit corrupti vitae</li>
+                    </ul>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <img src="@item.AboutImage_2" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-md-5 ml-auto">
+                    <h2>Learn From Us</h2>
+
+                    <p class="mb-4">@item.AboutDetails_2</p>
+
+                    <ul class="ul-check list-unstyled success">
+                        <li>Onsectetur adipisicing elit</li>
+                        <li>Dolorem saepe non eligendi possimus</li>
+                        <li>Voluptate odit corrupti vitae</li>
+                    </ul>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

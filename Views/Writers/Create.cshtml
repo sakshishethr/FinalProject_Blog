@@ -1,0 +1,66 @@
+﻿@model WebProjeOT.Models.Writer
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Writer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="WriterN_S" class="control-label"></label>
+                <input asp-for="WriterN_S" class="form-control" />
+                <span asp-validation-for="WriterN_S" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WriterAbout" class="control-label"></label>
+                <input asp-for="WriterAbout" class="form-control" />
+                <span asp-validation-for="WriterAbout" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WriterTitle" class="control-label"></label>
+                <input asp-for="WriterTitle" class="form-control" />
+                <span asp-validation-for="WriterTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortAbout" class="control-label"></label>
+                <input asp-for="ShortAbout" class="form-control" />
+                <span asp-validation-for="ShortAbout" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mail" class="control-label"></label>
+                <input asp-for="Mail" class="form-control" />
+                <span asp-validation-for="Mail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WriterImage" class="control-label"></label>
+                <input asp-for="WriterImage" class="form-control" />
+                <span asp-validation-for="WriterImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

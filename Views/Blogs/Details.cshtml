@@ -1,0 +1,120 @@
+﻿@model WebProjeOT.Models.Blog
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/LayoutProje.cshtml";
+}
+
+<!--<-->@*h1>Details</h1>
+
+    <div>
+        <h4>Blog</h4>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.BlogHeader)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.BlogHeader)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.BlogDetail)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.BlogDetail)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.BlogDate)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.BlogDate)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.BlogImage)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.BlogImage)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Categories)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Categories.CategoriesID)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Writer)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Writer.WriterID)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.BlogID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+@* Cover Blog -- > arka plan foto ve Blog title  *@
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('@Model.BlogImage');">
+    <div class="container">
+        <div class="row same-height justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="post-entry text-center">
+                    <span class="post-category text-white bg-success mb-3">@Model.Categories.CategoriesName</span>
+                    <h1 class="mb-4"><a href="#">@Model.BlogHeader</a></h1>
+                    <div class="post-meta align-items-center text-center">
+                        <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="@Model.Writer.WriterImage " alt="Image" class="img-fluid"></figure>
+                        <span class="d-inline-block mt-1">@Model.Writer.WriterN_S</span>
+                        <span>&nbsp;-&nbsp; @(((DateTime)Model.BlogDate).ToString("dd-MMM-yyyy"))</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="site-section py-lg">
+    <div class="container">
+
+        <div class="row blog-entries element-animate">
+
+            @* LongText-- >  Blog Long detail !!!Commentler gelecek *@
+            <div class="col-md-12 col-lg-8 main-content">
+                <div class="post-content-body">
+                    <p>
+                        @Model.BlogDetail .
+                    </p>
+
+
+                </div>
+            </div>
+
+            @*About Writer-- > Author of Blog  !!Kategori ve popular posts*@
+            <div class="col-md-12 col-lg-4 sidebar">
+                <div class="sidebar-box">
+                    <div class="bio text-center">
+                        <img src="@Model.Writer.WriterImage" alt="Image Placeholder" class="img-fluid mb-5">
+                        <div class="bio-body">
+                            <h2>@Model.Writer.WriterN_S</h2>
+                            <p class="mb-4">@Model.Writer.WriterAbout</p>
+                            @*<p><a href="#" class="btn btn-primary btn-sm rounded px-4 py-2">Diğer Yazılarım</a></p>*@
+
+                        </div>
+                    </div>
+                </div>
+
+                @*blog fotografi*@
+                <div class="sidebar-box">
+                    <div class="row mb-5 mt-5">
+                        <div class="col-md-12 mb-4">
+                            <img src="@Model.BlogImage" alt="Image placeholder" class="img-fluid rounded">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

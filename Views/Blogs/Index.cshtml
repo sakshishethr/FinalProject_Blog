@@ -1,0 +1,126 @@
+﻿@model IEnumerable<WebProjeOT.Models.Blog>
+@inject LanguageService language
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutProje.cshtml";
+}
+
+<!--<-->@*h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.BlogHeader)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BlogDetail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BlogDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BlogImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Categories)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Writer)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BlogHeader)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BlogDetail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BlogDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BlogImage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categories.CategoriesID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Writer.WriterID)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BlogID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.BlogID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.BlogID">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
+
+@{string color = "";}
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2>@language.Getkey("View  Blogs")</h2>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var i in Model)
+            {
+                if (i.Categories.CategoriesName == "Tech")
+                {
+                    color = "post-category text-white bg-info mb-3";
+                }
+
+                if (i.Categories.CategoriesName == "Film")
+                {
+                    color = "post-category text-white bg-danger mb-3";
+                }
+
+                if (i.Categories.CategoriesName == "Travel")
+                {
+                    color = "post-category text-white bg-warning mb-3";
+                }
+
+                if (i.Categories.CategoriesName == "Sport")
+                {
+                    color = "post-category text-white bg-success mb-3";
+                }
+
+                if (i.Categories.CategoriesName == "Politics")
+                {
+                    color = "post-category text-white bg-danger mb-3";
+                }
+
+                <div class="col-lg-4 mb-4">
+                    <div class="entry2">
+                        <a href="/Blogs/Details/@i.BlogID"><img src="@i.BlogImage" style="height:210px" alt="Image" class="img-fluid rounded"></a>
+                        <div class="excerpt">
+                            <span class="@color">@i.Categories.CategoriesName</span>
+
+                            <h2><a href="/Blogs/Details/@i.BlogID">@i.BlogHeader</a></h2>
+                            <div class="post-meta align-items-center text-left clearfix">
+                                <figure class="author-figure mb-0 mr-3 float-left"><img src="@i.Writer.WriterImage" alt="Image" class="img-fluid"></figure>
+                                <span class="d-inline-block mt-1">By <a href="#">@i.Writer.WriterN_S</a></span>
+                                <span>&nbsp;-&nbsp; @(((DateTime)i.BlogDate).ToString("dd-MMM-yyyy"))</span>
+                            </div>
+
+                            @*<p>@i.BlogDetail.Substring(0, i.BlogDetail.Substring(0, 200).LastIndexOf(""))...</p>*@
+                            <p><a href="/Blogs/Details/@i.BlogID">@language.Getkey("Read More")</a></p>
+                        </div>  
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>

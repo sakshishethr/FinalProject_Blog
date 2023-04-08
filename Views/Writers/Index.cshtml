@@ -1,0 +1,111 @@
+﻿@model IEnumerable<WebProjeOT.Models.Writer>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!--<-->@*h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.WriterN_S)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WriterAbout)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WriterTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShortAbout)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WriterImage)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WriterN_S)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WriterAbout)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WriterTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortAbout)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WriterImage)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.WriterID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.WriterID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.WriterID">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
+
+
+<h2>List of Writers</h2>
+<br />
+<table class="table table-bordered table-danger">
+    <tr>
+        <th>ID</th>
+        <th>Name Surname</th>
+        <th>About</th>
+        <th>Title</th>
+        <th>Short About</th>
+        <th>Mail</th>
+        <th>Phone Number</th>
+        <th colspan="3"></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.WriterID</td>
+            <td>@item.WriterN_S</td>
+            <td>@item.WriterAbout</td>
+            <td>@item.WriterTitle</td>
+            <td>@item.ShortAbout</td>
+            <td>@item.Mail</td>
+            <td>@item.PhoneNumber</td>
+            <td><a href="/Writers/Delete/@item.WriterID" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Writers/Edit/@item.WriterID" class="btn btn-success">Edit</a></td>
+            <td><a href="/Writers/Details/@item.WriterID" class="btn btn-warning">Details</a></td>
+        </tr>
+    }
+</table>
+
+<a href="/Writers/Create/" class="btn btn-primary">Add New Writer</a>

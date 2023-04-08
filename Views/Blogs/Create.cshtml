@@ -1,0 +1,54 @@
+﻿@model WebProjeOT.Models.Blog
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Blog</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BlogHeader" class="control-label"></label>
+                <input asp-for="BlogHeader" class="form-control" />
+                <span asp-validation-for="BlogHeader" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogDetail" class="control-label"></label>
+                <input asp-for="BlogDetail" class="form-control" />
+                <span asp-validation-for="BlogDetail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogDate" class="control-label"></label>
+                <input asp-for="BlogDate" class="form-control" />
+                <span asp-validation-for="BlogDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogImage" class="control-label"></label>
+                <input asp-for="BlogImage" class="form-control" />
+                <span asp-validation-for="BlogImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoriesID" class="control-label"></label>
+                <select asp-for="CategoriesID" class ="form-control" asp-items="ViewBag.CategoriesID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WriterID" class="control-label"></label>
+                <select asp-for="WriterID" class ="form-control" asp-items="ViewBag.WriterID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="AdminBlogList">Back to List</a>
+</div>
+
